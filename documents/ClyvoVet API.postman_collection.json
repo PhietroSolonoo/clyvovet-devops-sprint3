@@ -1,0 +1,1406 @@
+{
+  "info": {
+    "_postman_id": "27bd0762-09c7-45d3-93b9-1a4bb6e84211",
+    "name": "ClyvoVet API",
+    "description": "API para gestão de saúde de pets - Challenge FIAP 2026",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55174112",
+    "_collection_link": "https://go.postman.co/collection/55174112-27bd0762-09c7-45d3-93b9-1a4bb6e84211?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Tutores",
+      "item": [
+        {
+          "name": "Cadastrar tutor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Ana Silva\",\n  \"email\": \"ana.silva@email.com\",\n  \"telefone\": \"11987654321\",\n  \"cpf\": \"12345678901\",\n  \"dataNascimento\": \"1985-03-15\",\n  \"logradouro\": \"Rua das Flores\",\n  \"numero\": \"123\",\n  \"complemento\": \"Apto 45\",\n  \"bairro\": \"Jardim Paulista\",\n  \"cidade\": \"São Paulo\",\n  \"estado\": \"SP\",\n  \"cep\": \"01234567\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/tutores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tutores"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar tutores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/tutores?page=0&size=10&sort=nome,asc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tutores"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "nome,asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar tutor por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/tutores/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tutores",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar tutor",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Ana Silva Oliveira\",\n  \"email\": \"ana.oliveira@email.com\",\n  \"telefone\": \"11987654321\",\n  \"cpf\": \"12345678901\",\n  \"dataNascimento\": \"1985-03-15\",\n  \"logradouro\": \"Rua das Flores\",\n  \"numero\": \"123\",\n  \"complemento\": \"Apto 45\",\n  \"bairro\": \"Jardim Paulista\",\n  \"cidade\": \"São Paulo\",\n  \"estado\": \"SP\",\n  \"cep\": \"01234567\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/tutores/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tutores",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar tutor",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/tutores/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tutores",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pets",
+      "item": [
+        {
+          "name": "Cadastrar pet",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Rex\",\n  \"especie\": \"CACHORRO\",\n  \"raca\": \"Pastor Alemão\",\n  \"dataNascimento\": \"2019-08-20\",\n  \"peso\": 32.5,\n  \"sexo\": \"MACHO\",\n  \"castrado\": true,\n  \"tutorId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/pets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pets"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar pets (com filtros)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/pets?especie=CACHORRO&page=0&size=5&sort=nome,asc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pets"
+              ],
+              "query": [
+                {
+                  "key": "especie",
+                  "value": "CACHORRO"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                },
+                {
+                  "key": "sort",
+                  "value": "nome,asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar pet por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/pets/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pets",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar consultas do pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/pets/1/consultas?page=0&size=5&sort=dataHora,desc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pets",
+                "1",
+                "consultas"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                },
+                {
+                  "key": "sort",
+                  "value": "dataHora,desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar pet",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Rex Silva\",\n  \"especie\": \"CACHORRO\",\n  \"raca\": \"Pastor Alemão\",\n  \"dataNascimento\": \"2019-08-20\",\n  \"peso\": 33.0,\n  \"sexo\": \"MACHO\",\n  \"castrado\": true,\n  \"tutorId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/pets/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pets",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar pet",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/pets/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pets",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Clínicas",
+      "item": [
+        {
+          "name": "Cadastrar clínica",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"PetSaude Hospital Veterinário\",\n  \"cnpj\": \"12345678000190\",\n  \"email\": \"contato@petsaude.com.br\",\n  \"telefone\": \"1134567890\",\n  \"logradouro\": \"Av. Paulista\",\n  \"numero\": \"1000\",\n  \"complemento\": \"\",\n  \"bairro\": \"Bela Vista\",\n  \"cidade\": \"São Paulo\",\n  \"estado\": \"SP\",\n  \"cep\": \"01310100\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/clinicas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clinicas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar clínicas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/clinicas?page=0&size=10&sort=nome,asc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clinicas"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "nome,asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar clínica por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/clinicas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clinicas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar clínica",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"PetSaude Hospital Veterinário - Unidade Paulista\",\n  \"cnpj\": \"12345678000190\",\n  \"email\": \"contato@petsaude.com.br\",\n  \"telefone\": \"1134567890\",\n  \"logradouro\": \"Av. Paulista\",\n  \"numero\": \"1000\",\n  \"complemento\": \"10º andar\",\n  \"bairro\": \"Bela Vista\",\n  \"cidade\": \"São Paulo\",\n  \"estado\": \"SP\",\n  \"cep\": \"01310100\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/clinicas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clinicas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar clínica",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/clinicas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clinicas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Veterinários",
+      "item": [
+        {
+          "name": "Cadastrar veterinário",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Dra. Beatriz Mendes\",\n  \"crmv\": \"CRMV-SP 12345\",\n  \"especialidade\": \"Clínica Geral\",\n  \"email\": \"beatriz.mendes@vet.com\",\n  \"telefone\": \"11987651234\",\n  \"clinicaId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/veterinarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "veterinarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar veterinários (com filtros)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/veterinarios?especialidade=Clínica Geral&page=0&size=10&sort=nome,asc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "veterinarios"
+              ],
+              "query": [
+                {
+                  "key": "especialidade",
+                  "value": "Clínica Geral"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "nome,asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar veterinário por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/veterinarios/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "veterinarios",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar veterinário",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Dra. Beatriz Mendes Silva\",\n  \"crmv\": \"CRMV-SP 12345\",\n  \"especialidade\": \"Clínica Geral e Cirurgia\",\n  \"email\": \"beatriz.mendes@vet.com\",\n  \"telefone\": \"11987651234\",\n  \"clinicaId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/veterinarios/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "veterinarios",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar veterinário",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/veterinarios/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "veterinarios",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Consultas",
+      "item": [
+        {
+          "name": "Agendar consulta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataHora\": \"2024-01-15T10:30:00\",\n  \"tipoConsulta\": \"PREVENTIVO\",\n  \"statusConsulta\": \"AGENDADA\",\n  \"observacoes\": \"Animal saudável\",\n  \"diagnostico\": \"Sem alterações\",\n  \"tratamento\": \"Manter rotina\",\n  \"petId\": 1,\n  \"veterinarioId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/consultas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "consultas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar consultas com filtros",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/consultas?tipo=PREVENTIVO&status=AGENDADA&page=0&size=10&sort=dataHora,desc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "consultas"
+              ],
+              "query": [
+                {
+                  "key": "tipo",
+                  "value": "PREVENTIVO"
+                },
+                {
+                  "key": "status",
+                  "value": "AGENDADA"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "dataHora,desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar consulta por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/consultas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "consultas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar consulta",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataHora\": \"2024-01-15T10:30:00\",\n  \"tipoConsulta\": \"PREVENTIVO\",\n  \"statusConsulta\": \"CONCLUIDA\",\n  \"observacoes\": \"Animal saudável\",\n  \"diagnostico\": \"Sem alterações\",\n  \"tratamento\": \"Manter rotina\",\n  \"petId\": 1,\n  \"veterinarioId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/consultas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "consultas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar consulta",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/consultas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "consultas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Vacinas",
+      "item": [
+        {
+          "name": "Registrar vacina",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"V8\",\n  \"dataAplicacao\": \"2024-01-15\",\n  \"dataProximaDose\": \"2025-01-15\",\n  \"fabricante\": \"Zoetis\",\n  \"lote\": \"L123ABC\",\n  \"observacoes\": \"Aplicação anual\",\n  \"petId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/vacinas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "vacinas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar vacinas (com filtros)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/vacinas?petId=1&page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "vacinas"
+              ],
+              "query": [
+                {
+                  "key": "petId",
+                  "value": "1"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar vacinas vencidas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/vacinas/vencidas?page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "vacinas",
+                "vencidas"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar vacinas próximas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/vacinas/proximas?page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "vacinas",
+                "proximas"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar vacina por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/vacinas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "vacinas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar vacina",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"V10\",\n  \"dataAplicacao\": \"2024-01-15\",\n  \"dataProximaDose\": \"2025-01-15\",\n  \"fabricante\": \"MSD\",\n  \"lote\": \"L456DEF\",\n  \"observacoes\": \"Aplicação anual\",\n  \"petId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/vacinas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "vacinas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar vacina",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/vacinas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "vacinas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Medicamentos",
+      "item": [
+        {
+          "name": "Registrar medicamento",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Antibiótico\",\n  \"dosagem\": \"1 comprimido\",\n  \"frequencia\": \"12/12h\",\n  \"dataInicio\": \"2024-01-15\",\n  \"dataFim\": \"2024-01-25\",\n  \"statusMedicamento\": \"CONCLUIDO\",\n  \"observacoes\": \"Tratamento de infecção\",\n  \"petId\": 1,\n  \"consultaId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/medicamentos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "medicamentos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar medicamentos (com filtros)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/medicamentos?petId=1&status=ATIVO&page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "medicamentos"
+              ],
+              "query": [
+                {
+                  "key": "petId",
+                  "value": "1"
+                },
+                {
+                  "key": "status",
+                  "value": "ATIVO"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar medicamentos ativos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/medicamentos/ativos?page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "medicamentos",
+                "ativos"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar medicamento por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/medicamentos/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "medicamentos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar medicamento",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Antibiótico Forte\",\n  \"dosagem\": \"2 comprimidos\",\n  \"frequencia\": \"12/12h\",\n  \"dataInicio\": \"2024-01-15\",\n  \"dataFim\": \"2024-01-25\",\n  \"statusMedicamento\": \"CONCLUIDO\",\n  \"observacoes\": \"Tratamento de infecção - ajuste de dose\",\n  \"petId\": 1,\n  \"consultaId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/medicamentos/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "medicamentos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar medicamento",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/medicamentos/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "medicamentos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Exames",
+      "item": [
+        {
+          "name": "Registrar exame",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tipo\": \"Hemograma\",\n  \"dataRealizacao\": \"2024-01-16\",\n  \"resultado\": \"Normal\",\n  \"urlArquivo\": \"http://exames.com/123.pdf\",\n  \"observacoes\": \"Exame de rotina\",\n  \"petId\": 1,\n  \"consultaId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/exames",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "exames"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar exames (com filtros)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/exames?petId=1&tipo=Hemograma&page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "exames"
+              ],
+              "query": [
+                {
+                  "key": "petId",
+                  "value": "1"
+                },
+                {
+                  "key": "tipo",
+                  "value": "Hemograma"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar exame por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/exames/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "exames",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar exame",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tipo\": \"Hemograma Completo\",\n  \"dataRealizacao\": \"2024-01-16\",\n  \"resultado\": \"Normal - Sem alterações\",\n  \"urlArquivo\": \"http://exames.com/123.pdf\",\n  \"observacoes\": \"Exame de rotina\",\n  \"petId\": 1,\n  \"consultaId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/exames/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "exames",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar exame",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/exames/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "exames",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Alertas",
+      "item": [
+        {
+          "name": "Gerar alerta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tipoAlerta\": \"VACINA_PROXIMA\",\n  \"mensagem\": \"A vacina V8 do Rex vence em 30 dias\",\n  \"petId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/alertas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "alertas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar alertas (com filtros)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/alertas?petId=1&lido=false&page=0&size=10&sort=dataGeracao,desc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "alertas"
+              ],
+              "query": [
+                {
+                  "key": "petId",
+                  "value": "1"
+                },
+                {
+                  "key": "lido",
+                  "value": "false"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "dataGeracao,desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar alertas não lidos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/alertas/nao-lidos?page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "alertas",
+                "nao-lidos"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar alerta por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/alertas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "alertas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Marcar alerta como lido",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/alertas/1/lido",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "alertas",
+                "1",
+                "lido"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deletar alerta",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/alertas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "alertas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
